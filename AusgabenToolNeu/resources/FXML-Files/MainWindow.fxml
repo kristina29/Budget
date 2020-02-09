@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="568.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainFrameController">
+   <children>
+      <TabPane layoutX="14.0" layoutY="28.0" prefHeight="500.0" prefWidth="841.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+            <Tab text="Aktueller Monat">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BorderPane layoutX="14.0" layoutY="105.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+                           <top>
+                              <HBox alignment="CENTER_LEFT" spacing="10.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label prefHeight="27.0" prefWidth="44.0" text="Monat:" />
+                                    <ComboBox fx:id="monthComboBox" onAction="#handleSelectedMonth" prefWidth="150.0" />
+                                    <Button mnemonicParsing="false" onAction="#handleNewMonth" prefHeight="15.0" prefWidth="16.0" text="+" />
+                                 </children>
+                              </HBox>
+                           </top>
+                           <right>
+                              <PieChart fx:id="expensePieChart" legendVisible="false" prefHeight="492.0" prefWidth="485.0" BorderPane.alignment="TOP_CENTER">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding></PieChart>
+                           </right>
+                           <center>
+                              <GridPane prefHeight="414.0" prefWidth="474.0" vgap="10.0" BorderPane.alignment="CENTER">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.0" minWidth="10.0" prefWidth="252.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="133.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="130.0" minHeight="0.0" prefHeight="28.0" vgrow="NEVER" />
+                                  <RowConstraints maxHeight="401.0" minHeight="10.0" prefHeight="401.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="68.0" minHeight="0.0" prefHeight="13.0" vgrow="NEVER" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Ausgaben">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="newExpense" mnemonicParsing="false" onAction="#handleNewExpense" text="Neue Ausgabe" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+                                    <TableView fx:id="expenseTable" minWidth="392.0" prefHeight="367.0" prefWidth="422.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                      <columns>
+                                        <TableColumn fx:id="days" editable="false" minWidth="75.0" prefWidth="75.0" resizable="false" text="Datum" />
+                                        <TableColumn fx:id="categories" editable="false" minWidth="106.0" prefWidth="106.0" resizable="false" text="Kategorie" />
+                                          <TableColumn fx:id="amounts" editable="false" minWidth="75.0" prefWidth="75.0" resizable="false" text="Betrag" />
+                                          <TableColumn fx:id="descriptions" editable="false" minWidth="141.0" prefWidth="148.0" resizable="false" text="Beschreibung" />
+                                      </columns>
+                                    </TableView>
+                                    <HBox alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="148.0" spacing="5.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                                       <children>
+                                          <Label prefHeight="17.0" prefWidth="55.0" text="Summe" />
+                                          <Label fx:id="sumLabel" prefHeight="17.0" prefWidth="57.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <BorderPane.margin>
+                                    <Insets top="20.0" />
+                                 </BorderPane.margin>
+                              </GridPane>
+                           </center>
+                        </BorderPane>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+          <Tab text="Statistik">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <children>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+   				    <top>
+           			  <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="150.0" spacing="15.0" BorderPane.alignment="CENTER">
+              			<children>
+                 		  <Label text="Jahr" />
+                 		  <ComboBox fx:id="yearComboBox" onAction="#handleSelectedYear" prefWidth="100.0" />
+              			</children>
+           			  </HBox>
+        		    </top>
+        		    <center>
+        			  <BarChart fx:id="expensesChart" legendVisible="false" focusTraversable="false" BorderPane.alignment="CENTER">
+             			<xAxis>
+               			  <CategoryAxis side="BOTTOM" />
+             			</xAxis>
+             			<yAxis>
+               			  <NumberAxis side="LEFT" />
+             			</yAxis>
+           			  </BarChart>
+        			</center>
+     			  </BorderPane>
+     			</children>
+     		  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
