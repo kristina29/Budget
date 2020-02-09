@@ -234,7 +234,7 @@ public class MainFrameController {
 					//Ausgaben in die Tabelle laden
 					this.newExpense.setVisible(true);
 					this.expenses.clear();;
-					this.expenses.addAll(this.modelFacade.getExpenses(selectedMonth));
+					this.expenses.addAll(selectedMonth.getExpenses());
 				}
 			}
 			catch (NoSuchElementException e){

@@ -19,7 +19,9 @@ public class Expense {
 	 * Konstruktor.
 	 */
 	public Expense (Month month, int day, Categories category, double amount, String info) {
-		month.addExpense(this);
+		if (!month.getExpenses().contains(this)) {
+			month.addExpense(this);
+		}
 		this.month = month;
 		this.day = day;
 		this.category = category;
